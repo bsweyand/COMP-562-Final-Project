@@ -15,7 +15,7 @@ For this project, the idea is to guess between poisonous and non-poisonous mushr
 
 \section{Pre-Processing Data}
 
-\subsection{What was it done?}
+\subsection{How was it done?}
 In order to use the data set for the analysis to guess whether or not the mushrooms are poisounous, the data set needed to be pre-processed to change all the categorical classifications that were registered as strings, into integers. For that reason we started by investigating which could be the best approach to transform the information in order to have a better result for the random forest model. After some research, it was determined that we would have to change the values using One-Hot encoding process. This process would allow us ot have all the classifications in binary outputs $(0,1)$. With this new classification form, we can be able to interpret the data better as there would not be factors such as ranking that interfere in our guessing of the poisonous level of each of the mushrooms, and also it is a form of data interpretation that allows the random forests analyze the data easily and better.
 
 \section{Visualization}
@@ -32,5 +32,65 @@ The following image contains different set of graphs that show each category.
 \section{Training Model}
 
 \section{Accuracy of Model}
+Below are the confusion matrices for the model based on the training data and on the test data. A test-train split of $0.3$ is used for a total of  Because the model correctly identifies all instances in the dataset, we acheive an Accuracy of $100\%$ .
+Random forest achieves perfect accuracy on this data set because some of the features are very highly correlated with the target class (poisonous vs edible). Many of these features have exceptionally low p-values when compared to the target class. Additionally many features have a feature importance greater than $0.1$ (ring-type, odor, spore-print-color, gill-color, gill-size - see Table 3). The combination of these features creates enough separability between the two binary classes that the model is able to perfectly distinguish between them. 
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|} \hline 
+         &  y=1& y=0\\ \hline 
+          ŷ =1&  2935& 0\\ \hline 
+           ŷ=0&  0& 2751\\ \hline
+    \end{tabular}
+    \caption{Confusion matrix for training set}
+    \label{tab:my_label}
+\end{table}
+ 
+ \begin{table}[h]
+     \centering
+     \begin{tabular}{|c|c|c|} \hline 
+          &  y=1& y=0\\ \hline 
+          ŷ =1&  1273& 0\\ \hline 
+          ŷ =0&  0& 1165\\ \hline
+     \end{tabular}
+     \caption{Confusion matrix for test set}
+     \label{tab:my_label}
+ \end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|} \hline 
+    Feature                 &  Importance\\ \hline
+    ring-type                 &  0.155227\\ \hline
+    odor                      &  0.143699 \\ \hline 
+    spore-print-color         &  0.127049 \\ \hline 
+    gill-color                &  0.112346 \\ \hline 
+    gill-size                 &  0.092441 \\ \hline 
+    stalk-root                &  0.082176 \\ \hline 
+    population                &  0.054051 \\ \hline 
+    stalk-surface-below-ring  &  0.045363 \\ \hline 
+    habitat                   &  0.038348 \\ \hline 
+    stalk-shape               &  0.025254 \\ \hline 
+    gill-spacing              &  0.023300 \\ \hline 
+    ring-number               &  0.022665 \\ \hline 
+    cap-color                 &  0.019705 \\ \hline 
+    stalk-color-below-ring    &  0.012749 \\ \hline 
+    cap-shape                 &  0.011328  \\ \hline 
+    bruises\%3F               &   0.009085  \\ \hline 
+    stalk-color-above-ring    &  0.007656 \\ \hline 
+    cap-surface               &  0.006526 \\ \hline 
+    stalk-surface-above-ring  &  0.005640 \\ \hline 
+    veil-color                &  0.005394 \\ \hline 
+    veil-type                 &  0.000000 \\ \hline 
+    gill-attachment           &  0.000000   \\ \hline 
+
+    \end{tabular}
+    \caption{Feature importance for each of the 22 features}
+    \label{tab:my_label}
+\end{table}
+
+
+\newpage
+\section{Conclusion}
+Random forests are a very powerful class of models that can be used to great effect in many classification tasks. As illustrated here, if the data set contains sufficient separation between classes, then the Random Forest algorithm can achieve very high accuracy with relatively low computational complexity (The model used here only uses 10 total estimators). The Audubon Society Field Guide to North American Mushrooms (the source from which this data was extracted) states that there are no simple rules for determining the edibility of a mushroom (\href{https://www.kaggle.com/datasets/joebeachcapital/mushrooms/data}{ }), however, machine learning models such as this one can easily extract 'rules' without over-fitting which always work (in this particular data set).
 \end{document}
