@@ -31,6 +31,10 @@ The following image contains different set of graphs that show each category.
 
 
 \section{Training Model}
+To train the model, the data set must first be divided into features and labels, denoted by variables X and y. The y variable is determined to be the "class" feature because it is the dependent variable in this case. X is the remaining features. Using the Sklearn library we were then able to split the data into training and test sets used to train and fit the model. For this we chose a 70/30 split where 70\% of the data goes into train sets and 30\% of the data goes into test sets. Next, a random forest classifier with 10 estimators was created. We trained the model on the training data set using the fit function and training sets found earlier as parameters. Then with the trained model we were finally able to make predictions using the predict function provided by the Sklearn library.
+\\
+\\
+Additionally, we used k-fold cross validation with 10 folds to select hyperparameters and to improve the accuracy of our model. This was again done with Sklearn. In k-fold validation k-1 folds are used as training data, which is then validated on the remaining part of the data. The performance measure is the is the average of the values computed in the loop, which will be discussed in the next section.
 
 \section{Accuracy of Model}
 Below are the confusion matrices for the model based on the training data and on the test data. A test-train split of $0.3$ is used for a total of  Because the model correctly identifies all instances in the dataset, we acheive an Accuracy of $100\%$ .
