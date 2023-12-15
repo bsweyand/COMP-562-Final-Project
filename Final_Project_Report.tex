@@ -16,7 +16,9 @@ For this project, the idea is to guess between poisonous and non-poisonous mushr
 
 \section{Pre-Processing Data}
 
-\subsection{How was it done?}
+\textbf{How was it done?}
+\medskip
+
 In order to use the data set for the analysis to guess whether or not the mushrooms are poisounous, the data set needed to be pre-processed to change all the categorical classifications that were registered as strings, into integers. For that reason we started by investigating which could be the best approach to transform the information in order to have a better result for the random forest model. After some research, it was determined that we would have to change the values using One-Hot encoding process. This process would allow us ot have all the classifications in binary outputs $(0,1)$. With this new classification form, we can be able to interpret the data better as there would not be factors such as ranking that interfere in our guessing of the poisonous level of each of the mushrooms, and also it is a form of data interpretation that allows the random forests analyze the data easily and better.
 
 \section{Visualization}
